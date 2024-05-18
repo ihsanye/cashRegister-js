@@ -51,6 +51,7 @@ purchaseMoney.addEventListener("click", () => {
             let howManyCoin = 0;
 
             while (change >= currUnitsValue && coinAmount > 0) {
+                change = (change * 100) / 100;
                 change -= currUnitsValue;
                 coinAmount--;
                 howManyCoin++;
