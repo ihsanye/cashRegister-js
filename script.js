@@ -2,17 +2,17 @@ const cashMoney = document.getElementById("cash");
 const changeMoney = document.getElementById("change-due");
 const purchaseMoney = document.getElementById("purchase-btn");
 
-let price = 1.87;
+let price = 19.5;
 let cid = [
-    ["PENNY", 1.01],
-    ["NICKEL", 2.05],
-    ["DIME", 3.1],
-    ["QUARTER", 4.25],
-    ["ONE", 90],
-    ["FIVE", 55],
-    ["TEN", 20],
-    ["TWENTY", 60],
-    ["ONE HUNDRED", 100]
+    ["PENNY", 0.5],
+    ["NICKEL", 0],
+    ["DIME", 0],
+    ["QUARTER", 0],
+    ["ONE", 0],
+    ["FIVE", 0],
+    ["TEN", 0],
+    ["TWENTY", 0],
+    ["ONE HUNDRED", 0]
 ];
 
 purchaseMoney.addEventListener("click", () => {
@@ -51,7 +51,7 @@ purchaseMoney.addEventListener("click", () => {
             let howManyCoin = 0;
 
             while (change >= currUnitsValue && coinAmount > 0) {
-                change = (change * 100) / 100;
+                change = Number(change.toFixed(2));
                 change -= currUnitsValue;
                 coinAmount--;
                 howManyCoin++;
@@ -60,14 +60,17 @@ purchaseMoney.addEventListener("click", () => {
                 changeArr.push([`${currUnitsName}: $${howManyCoin * currUnitsValue}`]);
             }
         }
-        if (totalCID < change) {
-            changeMoney.innerText = `Status: INSUFFICIENT_FUNDS`;
-        }
-        else if (totalCID == change) {
+
+        totalCID -= cash - price;
+
+        if (totalCID == change) {
             changeMoney.innerText = `Status: CLOSED ${changeArr}`.replaceAll(",", " ");
         }
-        else if (totalCID > change) {
+        if (totalCID > change && change === 0) {
             changeMoney.innerText = `Status: OPEN ${changeArr}`.replaceAll(",", " ");
+        }
+        else if (totalCID < change || change != 0) {
+            changeMoney.innerText = `Status: INSUFFICIENT_FUNDS`;
         }
     }
 })
