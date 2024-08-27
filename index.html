@@ -5,13 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="./styles.css" />
-    <title>Document</title>
+    <title>Cash Register</title>
 </head>
 
 <body>
-    <input id="cash" type="number" value="">
-    <div id="change-due" value=""></div>
-    <button id="purchase-btn">Purchase</button>
+    <div class="container">
+        <h1>Cash Register</h1>
+        <div id="change-due" value=""></div>
+        <p>Enter cash from customer</p>
+        <input id="cash" type="number" value="">
+        <button id="purchase-btn">Purchase</button>
+        <div id="cash-machine">
+            <div class="brand">
+                <p id="brand-name">CASIO</p>
+                <p id="total-screen">Total:<span id="total"></span></p>
+            </div>
+            <p id="drawer"><strong>Change in drawer:</strong></p>
+        </div>
+        <div id="on-off-btn"><button></button></div>
+    </div>
 
     <script src="./script.js"></script>
 </body>

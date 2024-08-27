@@ -15,6 +15,11 @@ let cid = [
     ["ONE HUNDRED", 0]
 ];
 
+document.getElementById("total").innerHTML += ` <strong>$${price}</strong>`;
+for (let i = 0; i < cid.length; i++) {
+    document.getElementById("drawer").innerHTML += `<div>${cid[i]}</div>`.replaceAll(",", ": $");
+}
+
 purchaseMoney.addEventListener("click", () => {
     const currUnits = {
         "ONE HUNDRED": 100,
@@ -44,10 +49,10 @@ purchaseMoney.addEventListener("click", () => {
         totalCID /= 100;
 
         for (let i = cid.length - 1; i >= 0; i--) {
-            let currUnitsName = cid[i][0];//TWENTY
-            let currUnitsTotal = cid[i][1];//60
-            let currUnitsValue = currUnits[currUnitsName];//20
-            let coinAmount = Math.round(currUnitsTotal / currUnitsValue);//3
+            let currUnitsName = cid[i][0];
+            let currUnitsTotal = cid[i][1];
+            let currUnitsValue = currUnits[currUnitsName];
+            let coinAmount = Math.round(currUnitsTotal / currUnitsValue);
             let howManyCoin = 0;
 
             while (change >= currUnitsValue && coinAmount > 0) {
