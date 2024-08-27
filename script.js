@@ -11,7 +11,7 @@ let cid = [
     ["ONE", 0],
     ["FIVE", 0],
     ["TEN", 0],
-    ["TWENTY", 0],
+    ["TWENTY", 20],
     ["ONE HUNDRED", 0]
 ];
 
@@ -69,10 +69,10 @@ purchaseMoney.addEventListener("click", () => {
         totalCID -= cash - price;
 
         if (totalCID == change) {
-            changeMoney.innerText = `Status: CLOSED ${changeArr}`.replaceAll(",", " ");
+            changeMoney.innerText = `Status: CLOSED\n ${changeArr}`.replaceAll(",", "\n");
         }
         if (totalCID > change && change === 0) {
-            changeMoney.innerText = `Status: OPEN ${changeArr}`.replaceAll(",", " ");
+            changeMoney.innerText = `Status: OPEN\n ${changeArr}`.replaceAll(",", "\n");
         }
         else if (totalCID < change || change != 0) {
             changeMoney.innerText = `Status: INSUFFICIENT_FUNDS`;
